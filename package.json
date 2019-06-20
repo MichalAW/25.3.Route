@@ -5,12 +5,7 @@
     "main": "script.js",
     "scripts": {
         "test:echo": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack",
-        "start:mode": "webpack-dev-server --mode=development",
-        "build": "webpack --mode=production",
-        "development": "webpack --mode=development",
-        "start-dev": "webpack-dev-server",
-        "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore"
+        "start": "node server.js"
     },
     "repository": {
         "type": "git",
@@ -35,13 +30,11 @@
         "optimize-js-plugin": "0.0.4",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
-        "style-loader": "^0.23.1",
-        "webpack": "^4.31.0",
-        "webpack-cli": "^3.3.2",
-        "webpack-dev-server": "^3.4.1"
+        "style-loader": "^0.23.1"
     },
     "dependencies": {
-        "node": "^12.2.0",
-        "webpack": "^4.31.0"
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "node": "^12.2.0"
     }
 }

@@ -1,11 +1,23 @@
+var fs = require('fs')
 var express = require('express');
 var app = express();
+var stringifyFile = req.params.note();
 
-app.get('/', function (req, res) {
-    console.log('Otrzymałem żądanie GET do strony głównej');
-    res.send('Hello GET!');
+app.use(bodyParser.json());
+
+fs.readFile('./test.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    stringifyFile = data
+    res.send(data);
 });
 
-var server = app.listen(3000, function () {
-    console.log('Przykładowa aplikacja nasłuchuje na http://localhost:3000');
+app.post('/updateNote/:note', function () {
+    res.send('Hello POST!');
 });
+
+fs.writeFile('./test.json', stringifyFile, function (err) {
+    If (err) throw err
+    console.log('file updated');
+});
+
+app.listen(3000);
