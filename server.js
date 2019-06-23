@@ -16,7 +16,7 @@ app.post('/updateNote/:note', function () {
 });
 
 fs.writeFile('./test.json', stringifyFile, function (err) {
-    If (err) throw err
+    if (err) throw err
     console.log('file updated');
 });
 
