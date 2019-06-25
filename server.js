@@ -5,6 +5,11 @@ var stringifyFile = req.params.note();
 
 app.use(bodyParser.json());
 
+fs.writeFile('./test.json', stringifyFile, function (err) {
+    if (err) throw err
+    console.log('file updated');
+});
+
 fs.readFile('./test.json', 'utf8', function (err, data) {
     if (err) throw err;
     stringifyFile = data
@@ -13,11 +18,6 @@ fs.readFile('./test.json', 'utf8', function (err, data) {
 
 app.post('/updateNote/:note', function () {
     res.send('Hello POST!');
-});
-
-fs.writeFile('./test.json', stringifyFile, function (err) {
-    if (err) throw err
-    console.log('file updated');
 });
 
 app.listen(3000);
