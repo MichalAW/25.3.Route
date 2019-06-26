@@ -1,11 +1,12 @@
 var fs = require('fs')
 var express = require('express');
 var app = express();
-var stringifyFile = req.params.note();
+var bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-app.get('/', function () {
+app.get('/', function (req, res) {
+    var stringifyFile = req.params.note;
     fs.readFile('./test.json', 'utf8', function (err, data) {
         if (err) throw err;
         stringifyFile = data
@@ -13,7 +14,7 @@ app.get('/', function () {
     });
 });
 
-app.post('/updateNote/:stringifyFile', function () {
+app.post('/updateNote/:stringifyFile', function (req, res) {
     fs.writeFile('./test.json', stringifyFile, function (err) {
         if (err) throw err
         console.log('file updated');
